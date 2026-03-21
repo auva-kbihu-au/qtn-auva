@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Estimasi Umroh - Auva Kbihu AU</title>
+    <link rel="icon" href="https://img.icons8.com/color/192/kaaba.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/kaaba.png">
+    <style>
+        :root { --primary: #2c3e50; --accent: #d4af37; --bg: #f4f7f6; }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0; padding: 15px; color: #333; }
+        .card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+        .logo-box { text-align: center; font-size: 60px; margin-bottom: 10px; }
+        h2 { text-align: center; margin: 0; color: var(--primary); font-size: 1.5rem; }
+        .subtitle { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+        .section-title { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); font-weight: bold; margin: 15px 0 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; background: #fafafa; margin-bottom: 10px; }
+        .res-card { background: var(--primary); color: white; border-radius: 12px; padding: 20px; margin-top: 20px; }
+        .highlight { color: var(--accent); font-weight: bold; font-size: 1.4rem; text-align: center; display: block; }
+        footer { text-align: center; font-size: 0.7rem; color: #999; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="logo-box">🕋</div>
+    <h2>Estimasi Biaya Umroh</h2>
+    <p class="subtitle">Auva Kbihu AU</p>
+    <div class="section-title">Data Rombongan</div>
+    <input type="number" id="totJam" value="35" placeholder="Total Jamaah" oninput="hitung()">
+    <input type="number" id="jamGratis" value="1" placeholder="Gratis/FOC" oninput="hitung()">
+    <div class="section-title">Komponen Biaya</div>
+    <input type="number" id="cTiket" value="15450000" oninput="hitung()">
+    <input type="number" id="cLA" value="14450000" oninput="hitung()">
+    <div class="res-card">
+        <div style="display:flex; justify-content:space-between"><span>Total Modal:</span> <span id="resModal">0</span></div>
+        <div style="text-align:center; margin-top:10px">Harga Jual /Orang:</div>
+        <span class="highlight" id="resJual">Rp 0</span>
+    </div>
+    <footer>&copy; 2026 Auva Kbihu AU</footer>
+</div>
+<script>
+function hitung() {
+    const totJam = parseFloat(document.getElementById('totJam').value) || 0;
+    const jamGratis = parseFloat(document.getElementById('jamGratis').value) || 0;
+    const cTiket = parseFloat(document.getElementById('cTiket').value) || 0;
+    const cLA = parseFloat(document.getElementById('cLA').value) || 0;
+    const jamBayar = totJam - jamGratis;
+    const totalModal = (totJam * (cTiket + cLA));
+    const hargaJual = (totalModal / jamBayar) + 2000000;
+    document.getElementById('resModal').innerText = "Rp " + new Intl.NumberFormat('id-ID').format(totalModal);
+    document.getElementById('resJual').innerText = "Rp " + new Intl.NumberFormat('id-ID').format(hargaJual);
+}
+window.onload = hitung;
+</script>
+</body>
+</html>
