@@ -6,21 +6,17 @@
 
 <title>Auva Kbihu AU</title>
 
-<!-- ICON APP (PENTING) -->
 <link rel="icon" href="https://img.icons8.com/color/192/kaaba.png">
 <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/kaaba.png">
 
-<!-- PWA MANIFEST -->
 <link rel="manifest" href='data:application/manifest+json,{
 "name":"Auva Kbihu AU",
 "short_name":"Auva",
-"start_url":"./",
 "display":"standalone",
-"background_color":"#f4f7f6",
 "theme_color":"#1a5d4a",
+"background_color":"#f4f7f6",
 "icons":[
-{"src":"https://img.icons8.com/color/192/kaaba.png","sizes":"192x192","type":"image/png"},
-{"src":"https://img.icons8.com/color/512/kaaba.png","sizes":"512x512","type":"image/png"}
+{"src":"https://img.icons8.com/color/192/kaaba.png","sizes":"192x192","type":"image/png"}
 ]}'>
 
 <meta name="theme-color" content="#1a5d4a">
@@ -30,35 +26,32 @@
 --primary:#1a5d4a;
 --accent:#c9a227;
 --bg:#f4f7f6;
---white:#ffffff;
+--white:#fff;
 }
 
 body{
-font-family:-apple-system,system-ui;
+font-family:system-ui;
 background:var(--bg);
 margin:0;
 padding:15px;
-color:#333;
 }
 
 .card{
-background:var(--white);
+background:#fff;
 border-radius:15px;
 padding:20px;
 max-width:500px;
 margin:auto;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
-border-top:5px solid var(--primary);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.logo-box{
+.logo{
 text-align:center;
 margin-bottom:10px;
 }
 
-.logo-box img{
-width:90px;
-height:90px;
+.logo img{
+width:80px;
 }
 
 h2{
@@ -67,22 +60,21 @@ color:var(--primary);
 margin:0;
 }
 
-.subtitle{
+.sub{
 text-align:center;
-color:#666;
+color:#777;
 margin-bottom:20px;
-font-weight:bold;
 }
 
-.section-title{
-font-size:12px;
+.title{
 color:var(--accent);
+font-size:13px;
 margin-top:15px;
 border-bottom:1px solid #eee;
 }
 
-.input-group{
-margin-bottom:10px;
+.group{
+margin-top:10px;
 }
 
 label{
@@ -92,9 +84,11 @@ font-weight:bold;
 
 input{
 width:100%;
-padding:10px;
-border-radius:8px;
+padding:12px;
+border-radius:10px;
 border:1px solid #ddd;
+margin-top:5px;
+margin-bottom:10px;
 }
 
 .row{
@@ -112,27 +106,27 @@ padding:15px;
 background:var(--primary);
 color:white;
 border:none;
-border-radius:10px;
+border-radius:12px;
+font-size:16px;
 font-weight:bold;
-margin-top:15px;
 }
 
-.res-card{
+.result{
 display:none;
 background:var(--primary);
 color:white;
+margin-top:15px;
 padding:15px;
 border-radius:15px;
-margin-top:15px;
 }
 
-.res-item{
+.item{
 display:flex;
 justify-content:space-between;
-margin:5px 0;
+margin:8px 0;
 }
 
-.highlight{
+.price{
 color:var(--accent);
 font-size:18px;
 font-weight:bold;
@@ -144,43 +138,70 @@ font-weight:bold;
 
 <div class="card">
 
-<div class="logo-box">
+<div class="logo">
 <img src="https://img.icons8.com/color/96/kaaba.png">
 </div>
 
 <h2>Estimasi Umroh</h2>
-<p class="subtitle">Auva Kbihu AU</p>
+<div class="sub">Auva Kbihu AU</div>
 
-<div class="section-title">Data</div>
+<div class="title">Data</div>
 
 <div class="row">
-<div class="input-group">
+<div>
 <label>Total</label>
 <input type="number" id="totJam" value="35">
 </div>
 
-<div class="input-group">
+<div>
 <label>Gratis</label>
 <input type="number" id="jamGratis" value="1">
 </div>
 
-<div class="input-group">
+<div>
 <label>TL</label>
 <input type="number" id="numTL" value="1">
 </div>
 </div>
 
-<div class="section-title">Biaya</div>
+<div class="title">Biaya</div>
 
+<div class="group">
+<label>Tiket</label>
 <input type="number" id="cTiket" value="15450000">
-<input type="number" id="cLA" value="14450000">
-<input type="number" id="cAsuransi" value="60000">
-<input type="number" id="cHandling" value="100000">
-<input type="number" id="cPIC" value="0">
-<input type="number" id="cAlat" value="1000000">
-<input type="number" id="cAplikasi" value="60000">
 
-<div class="section-title">Profit</div>
+<label>Hotel</label>
+<input type="number" id="cLA" value="14450000">
+
+<div class="row">
+<div>
+<label>Asuransi</label>
+<input type="number" id="cAsuransi" value="60000">
+</div>
+
+<div>
+<label>Handling</label>
+<input type="number" id="cHandling" value="100000">
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Diskon</label>
+<input type="number" id="cPIC" value="0">
+</div>
+
+<div>
+<label>Perlengkapan</label>
+<input type="number" id="cAlat" value="1000000">
+</div>
+</div>
+
+<label>Aplikasi</label>
+<input type="number" id="cAplikasi" value="60000">
+</div>
+
+<div class="title">Profit</div>
 
 <input type="number" id="profitPct" value="10">
 
@@ -188,31 +209,31 @@ font-weight:bold;
 
 </div>
 
-<div id="hasil" class="res-card">
+<div class="result" id="hasil">
 
-<div class="res-item">
+<div class="item">
 <span>Modal</span>
 <span id="sub"></span>
 </div>
 
-<div class="res-item">
+<div class="item">
 <span>Profit</span>
 <span id="pk"></span>
 </div>
 
-<div class="res-item">
+<div class="item">
 <span>TL</span>
 <span id="tl"></span>
 </div>
 
-<div class="res-item">
+<div class="item">
 <span>Bersih</span>
 <span id="pb"></span>
 </div>
 
-<div class="res-item">
+<div class="item">
 <span>Harga</span>
-<span id="hj" class="highlight"></span>
+<span id="hj" class="price"></span>
 </div>
 
 </div>
