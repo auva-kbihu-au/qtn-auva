@@ -1,273 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Auva Kbihu AU</title>
-
-<link rel="icon" href="https://img.icons8.com/color/192/kaaba.png">
-<link rel="apple-touch-icon" href="https://img.icons8.com/color/192/kaaba.png">
-
-<link rel="manifest" href='data:application/manifest+json,{
-"name":"Auva Kbihu AU",
-"short_name":"Auva",
-"display":"standalone",
-"theme_color":"#1a5d4a",
-"background_color":"#f4f7f6",
-"icons":[
-{"src":"https://img.icons8.com/color/192/kaaba.png","sizes":"192x192","type":"image/png"}
-]}'>
-
-<meta name="theme-color" content="#1a5d4a">
-
-<style>
-:root {
---primary:#1a5d4a;
---accent:#c9a227;
---bg:#f4f7f6;
---white:#fff;
-}
-
-body{
-font-family:system-ui;
-background:var(--bg);
-margin:0;
-padding:15px;
-}
-
-.card{
-background:#fff;
-border-radius:15px;
-padding:20px;
-max-width:500px;
-margin:auto;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.logo{
-text-align:center;
-margin-bottom:10px;
-}
-
-.logo img{
-width:80px;
-}
-
-h2{
-text-align:center;
-color:var(--primary);
-margin:0;
-}
-
-.sub{
-text-align:center;
-color:#777;
-margin-bottom:20px;
-}
-
-.title{
-color:var(--accent);
-font-size:13px;
-margin-top:15px;
-border-bottom:1px solid #eee;
-}
-
-.group{
-margin-top:10px;
-}
-
-label{
-font-size:12px;
-font-weight:bold;
-}
-
-input{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #ddd;
-margin-top:5px;
-margin-bottom:10px;
-}
-
-.row{
-display:flex;
-gap:10px;
-}
-
-.row div{
-flex:1;
-}
-
-.btn{
-width:100%;
-padding:15px;
-background:var(--primary);
-color:white;
-border:none;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-}
-
-.result{
-display:none;
-background:var(--primary);
-color:white;
-margin-top:15px;
-padding:15px;
-border-radius:15px;
-}
-
-.item{
-display:flex;
-justify-content:space-between;
-margin:8px 0;
-}
-
-.price{
-color:var(--accent);
-font-size:18px;
-font-weight:bold;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/144/kaaba.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/kaaba.png">
+    <title>Auva Kbihu AU</title>
+    <style>
+        :root { --p: #1a5d4a; --a: #c9a227; --bg: #f4f7f6; }
+        body { font-family: sans-serif; background: var(--bg); padding: 15px; margin: 0; }
+        .card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 450px; margin: auto; border-top: 5px solid var(--p); }
+        .logo { text-align: center; margin-bottom: 10px; }
+        .logo img { width: 70px; }
+        h2 { color: var(--p); text-align: center; margin: 0; font-size: 1.3rem; }
+        .sub { text-align: center; color: #666; font-size: 0.8rem; margin-bottom: 15px; font-weight: bold; }
+        .sect { font-size: 0.7rem; text-transform: uppercase; color: var(--a); margin-top: 15px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 3px; margin-bottom: 10px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; margin-bottom: 3px; color: #555; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box; background: #fafafa; margin-bottom: 8px; }
+        .row { display: flex; gap: 8px; }
+        .row > div { flex: 1; }
+        .btn { width: 100%; padding: 14px; background: var(--p); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .res { background: var(--p); color: white; padding: 15px; border-radius: 12px; display: none; margin-top: 15px; }
+        .item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+        .big { color: var(--a); font-weight: bold; font-size: 1.2rem; }
+    </style>
 </head>
-
 <body>
-
 <div class="card">
-
-<div class="logo">
-<img src="https://img.icons8.com/color/96/kaaba.png">
+    <div class="logo"><img src="https://img.icons8.com/color/96/kaaba.png"></div>
+    <h2>Estimasi Biaya Umroh</h2>
+    <div class="sub">Auva Kbihu AU</div>
+    <div class="sect">Data Rombongan</div>
+    <div class="row">
+        <div><label>Total Orang</label><input type="number" id="n" value="35"></div>
+        <div><label>Gratis (FOC)</label><input type="number" id="f" value="1"></div>
+        <div><label>Jumlah TL</label><input type="number" id="tl" value="1"></div>
+    </div>
+    <div class="sect">Komponen Biaya</div>
+    <label>Tiket Maskapai</label><input type="number" id="c1" value="15450000">
+    <label>LA / Hotel</label><input type="number" id="c2" value="14450000">
+    <div class="row">
+        <div><label>Asuransi</label><input type="number" id="c3" value="60000"></div>
+        <div><label>Handling</label><input type="number" id="c4" value="100000"></div>
+    </div>
+    <div class="row">
+        <div><label>Perlengkapan</label><input type="number" id="c5" value="1000000"></div>
+        <div><label>Aplikasi</label><input type="number" id="c6" value="60000"></div>
+    </div>
+    <div class="sect">Margin</div>
+    <label>Target Profit (%)</label><input type="number" id="p" value="10">
+    <button class="btn" onclick="hit()">HITUNG ESTIMASI</button>
+    <div id="re" class="res">
+        <div class="item"><span>Modal Pokok / Pax</span> <span id="r1"></span></div>
+        <div class="item"><span>Profit Bersih</span> <span id="r2"></span></div>
+        <div class="item" style="border-top: 2px solid var(--a); margin-top: 10px; padding-top: 10px;">
+            <span style="font-weight:bold">HARGA BROSUR</span>
+            <span id="r3" class="big"></span>
+        </div>
+    </div>
 </div>
-
-<h2>Estimasi Umroh</h2>
-<div class="sub">Auva Kbihu AU</div>
-
-<div class="title">Data</div>
-
-<div class="row">
-<div>
-<label>Total</label>
-<input type="number" id="totJam" value="35">
-</div>
-
-<div>
-<label>Gratis</label>
-<input type="number" id="jamGratis" value="1">
-</div>
-
-<div>
-<label>TL</label>
-<input type="number" id="numTL" value="1">
-</div>
-</div>
-
-<div class="title">Biaya</div>
-
-<div class="group">
-<label>Tiket</label>
-<input type="number" id="cTiket" value="15450000">
-
-<label>Hotel</label>
-<input type="number" id="cLA" value="14450000">
-
-<div class="row">
-<div>
-<label>Asuransi</label>
-<input type="number" id="cAsuransi" value="60000">
-</div>
-
-<div>
-<label>Handling</label>
-<input type="number" id="cHandling" value="100000">
-</div>
-</div>
-
-<div class="row">
-<div>
-<label>Diskon</label>
-<input type="number" id="cPIC" value="0">
-</div>
-
-<div>
-<label>Perlengkapan</label>
-<input type="number" id="cAlat" value="1000000">
-</div>
-</div>
-
-<label>Aplikasi</label>
-<input type="number" id="cAplikasi" value="60000">
-</div>
-
-<div class="title">Profit</div>
-
-<input type="number" id="profitPct" value="10">
-
-<button class="btn" onclick="hitung()">HITUNG</button>
-
-</div>
-
-<div class="result" id="hasil">
-
-<div class="item">
-<span>Modal</span>
-<span id="sub"></span>
-</div>
-
-<div class="item">
-<span>Profit</span>
-<span id="pk"></span>
-</div>
-
-<div class="item">
-<span>TL</span>
-<span id="tl"></span>
-</div>
-
-<div class="item">
-<span>Bersih</span>
-<span id="pb"></span>
-</div>
-
-<div class="item">
-<span>Harga</span>
-<span id="hj" class="price"></span>
-</div>
-
-</div>
-
 <script>
-function hitung(){
-
-let nJam=+totJam.value
-let nFoc=+jamGratis.value
-let nTL=+numTL.value
-let p=+profitPct.value/100
-
-let subtotal=+cTiket.value+ +cLA.value+ +cAsuransi.value+ +cHandling.value+ +cPIC.value+ +cAlat.value+ +cAplikasi.value
-
-let total=subtotal*nJam
-let pk=total*p
-let tl=subtotal*nTL
-let pb=pk-tl
-
-let bayar=nJam-nFoc
-let harga=(total+pk)/bayar
-
-let f=n=>"Rp "+Math.ceil(n).toLocaleString("id-ID")
-
-hasil.style.display="block"
-
-sub.innerText=f(subtotal)
-pk.innerText=f(pk)
-tl.innerText=f(tl)
-pb.innerText=f(pb)
-hj.innerText=f(harga)
-
+function hit() {
+    const n = parseFloat(document.getElementById('n').value)||0, f = parseFloat(document.getElementById('f').value)||0;
+    const tl = parseFloat(document.getElementById('tl').value)||0, p = (parseFloat(document.getElementById('p').value)||0)/100;
+    const c = ['c1','c2','c3','c4','c5','c6'].reduce((a,id)=>a+(parseFloat(document.getElementById(id).value)||0),0);
+    const untung = (c*n)*p, bersih = untung-(c*tl), harga = ((c*n)+untung)/(n-f);
+    const fmt = (v) => "Rp "+Math.ceil(v).toLocaleString('id-ID');
+    document.getElementById('re').style.display='block';
+    document.getElementById('r1').innerText=fmt(c);
+    document.getElementById('r2').innerText=fmt(bersih);
+    document.getElementById('r3').innerText=fmt(harga);
 }
 </script>
-
 </body>
 </html>
